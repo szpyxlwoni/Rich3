@@ -32,6 +32,10 @@ public class Players {
         return players.get(0);
     }
 
+    public void move() {
+        getCurrentPlayer().move(roll());
+    }
+
     public int roll() {
         return new Random().nextInt(6) + 1;
     }
