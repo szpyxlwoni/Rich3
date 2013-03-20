@@ -2,6 +2,7 @@ package org.rich.player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Players {
     private List<Player> players = new ArrayList<Player>();
@@ -32,6 +33,6 @@ public class Players {
     }
 
     public int roll() {
-        return 0;  //To change body of created methods use File | Settings | File Templates.
+        return new Random().nextInt(6) + 1;
     }
 }
