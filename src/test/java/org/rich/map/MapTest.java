@@ -14,9 +14,9 @@ public class MapTest {
     }
 
     @Test
-    public void should_map_to_string_when_given_70_empty_house_and_one_player() {
+    public void should_map_to_string_when_given_70_empty_house_and_two_player() {
         Map map = new Map(70);
-        Players players = new Players("1");
+        Players players = new Players("12");
         assertThat(map.toOutputType(players), is("Q0000000000000000000000000000\n" +
                                                  "0                           0\n" +
                                                  "0                           0\n" +
