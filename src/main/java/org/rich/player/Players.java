@@ -48,4 +48,8 @@ public class Players {
         }
         return mapStr;
     }
+
+    public String getCurrentPlayerName() {
+        return getCurrentPlayer().getName();
+    }
 }
