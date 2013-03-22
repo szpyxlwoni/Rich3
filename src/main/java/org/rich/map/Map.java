@@ -29,7 +29,7 @@ public class Map {
         for (int i = 0; i < 6; i++) {
             map.add(new House(3));
         }
-        map.add(new StartPoint());
+        map.add(new GiftHouse());
         for (int i = 0; i < 13; i++) {
             map.add(new House(4));
         }

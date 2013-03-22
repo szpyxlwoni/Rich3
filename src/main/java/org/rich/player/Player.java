@@ -1,14 +1,5 @@
 package org.rich.player;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.ParameterList;
-import org.rich.item.Item;
-import org.rich.map.House;
-import org.rich.map.ItemHouse;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 import static org.rich.map.ItemHouse.*;
 
 public class Player {
@@ -21,18 +12,18 @@ public class Player {
     private final String abbr;
 
     private int money;
-    private List<Item> item;
     private int point;
     private int bomb;
     private int robot;
     private int blocker;
+    private boolean hasGod;
 
     public Player(String name, String abbr) {
         this.name = name;
         this.abbr = abbr;
         this.money = INIT_MONEY;
         this.point = INIT_POINT;
-        item = new ArrayList<Item>();
+        this.hasGod = false;
     }
 
     public void moveOneStep() {
@@ -61,10 +52,6 @@ public class Player {
 
     public void setLocation(int location) {
         this.location = location;
-    }
-
-    public List<Item> getItem() {
-        return item;
     }
 
     public int getPoint() {
@@ -100,5 +87,13 @@ public class Player {
 
     public int getBlocker() {
         return blocker;
+    }
+
+    public boolean isBlessed() {
+        return hasGod;
+    }
+
+    public void toBless() {
+        hasGod = true;
     }
 }

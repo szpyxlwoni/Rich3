@@ -44,7 +44,6 @@ public class ItemHouseTest {
         itemHouse.executeFunc(player, new Scanner(System.in));
 
         assertThat(player.getPoint(), is(0));
-        assertTrue(player.getItem().isEmpty());
     }
 
     @Test
@@ -55,7 +54,6 @@ public class ItemHouseTest {
         itemHouse.executeFunc(player, scanner);
 
         assertThat(player.getPoint(), is(40));
-        assertTrue(player.getItem().isEmpty());
     }
 
     @Test
@@ -65,7 +63,6 @@ public class ItemHouseTest {
         itemHouse.executeFunc(player, scanner);
 
         assertThat(player.getPoint(), is(INIT_POINT));
-        assertTrue(player.getItem().isEmpty());
     }
 
     @Test
@@ -75,6 +72,5 @@ public class ItemHouseTest {
         itemHouse.executeFunc(player, scanner);
 
         assertThat(player.getPoint(), is(INIT_POINT));
-        assertTrue(player.getItem().isEmpty());
     }
 }
