@@ -25,7 +25,7 @@ public class Map {
         for (int i = 0; i < 13; i++) {
             map.add(new House(2));
         }
-        map.add(new StartPoint());
+        map.add(new ItemHouse());
         for (int i = 0; i < 6; i++) {
             map.add(new House(3));
         }

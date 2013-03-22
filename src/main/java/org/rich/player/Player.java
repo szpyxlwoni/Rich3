@@ -1,10 +1,15 @@
 package org.rich.player;
 
+import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.ParameterList;
+import org.rich.item.Item;
 import org.rich.map.House;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Player {
+    public static final int INIT_POINT = 1000;
     private final String name;
     public final static int INIT_MONEY = 1000;
 
@@ -13,11 +18,15 @@ public class Player {
     private final String abbr;
 
     private int money;
+    private List<Item> item;
+    private int point;
 
     public Player(String name, String abbr) {
         this.name = name;
         this.abbr = abbr;
         this.money = INIT_MONEY;
+        this.point = INIT_POINT;
+        item = new ArrayList<Item>();
     }
 
     public void moveOneStep() {
@@ -46,5 +55,17 @@ public class Player {
 
     public void setLocation(int location) {
         this.location = location;
+    }
+
+    public List<Item> getItem() {
+        return item;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
     }
 }
