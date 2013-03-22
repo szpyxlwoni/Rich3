@@ -38,9 +38,12 @@ public class Map {
             map.add(new House(5));
         }
         map.add(new StartPoint());
-        for (int i = 0; i < 6; i++) {
-            map.add(new StartPoint());
-        }
+        map.add(new Mine(20));
+        map.add(new Mine(80));
+        map.add(new Mine(100));
+        map.add(new Mine(40));
+        map.add(new Mine(80));
+        map.add(new Mine(60));
     }
 
     public int getSize() {

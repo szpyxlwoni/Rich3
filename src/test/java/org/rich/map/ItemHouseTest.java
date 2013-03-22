@@ -29,15 +29,12 @@ public class ItemHouseTest {
         Scanner scanner = new Scanner(new ByteArrayInputStream("1 2 3".getBytes()));
 
         itemHouse.executeFunc(player, scanner);
-        assertThat(player.getItem().size(), is(1));
         assertThat(player.getPoint(), is(INIT_POINT - BLOCKER_POINT));
 
         itemHouse.executeFunc(player, scanner);
-        assertThat(player.getItem().size(), is(2));
         assertThat(player.getPoint(), is(INIT_POINT - BLOCKER_POINT - ROBOT_POINT));
 
         itemHouse.executeFunc(player, scanner);
-        assertThat(player.getItem().size(), is(3));
         assertThat(player.getPoint(), is(INIT_POINT - BLOCKER_POINT - ROBOT_POINT - BOMB_POINT));
     }
 
@@ -51,8 +48,20 @@ public class ItemHouseTest {
     }
 
     @Test
+    public void should_do_nothing_when_player_have_not_enough_money_to_buy_its_choose_item() {
+        player.setPoint(40);
+        Scanner scanner = new Scanner(new ByteArrayInputStream("3".getBytes()));
+
+        itemHouse.executeFunc(player, scanner);
+
+        assertThat(player.getPoint(), is(40));
+        assertTrue(player.getItem().isEmpty());
+    }
+
+    @Test
     public void should_do_nothing_when_player_type_a_wrong_input() {
         Scanner scanner = new Scanner(new ByteArrayInputStream("d".getBytes()));
+
         itemHouse.executeFunc(player, scanner);
 
         assertThat(player.getPoint(), is(INIT_POINT));
@@ -62,8 +71,9 @@ public class ItemHouseTest {
     @Test
     public void should_do_nothing_when_player_choose_wrong_item() {
         Scanner scanner = new Scanner(new ByteArrayInputStream("9".getBytes()));
+
         itemHouse.executeFunc(player, scanner);
-                                                                                                a
+
         assertThat(player.getPoint(), is(INIT_POINT));
         assertTrue(player.getItem().isEmpty());
     }

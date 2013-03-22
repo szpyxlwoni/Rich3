@@ -23,12 +23,12 @@ public class MapTest {
         Map map = new Map();
         Players players = new Players("12");
         assertThat(map.toOutputType(players), is("Q0000000000000S0000000000000T\n" +
-                "S                           0\n" +
-                "S                           0\n" +
-                "S                           0\n" +
-                "S                           0\n" +
-                "S                           0\n" +
-                "S                           0\n" +
+                "$                           0\n" +
+                "$                           0\n" +
+                "$                           0\n" +
+                "$                           0\n" +
+                "$                           0\n" +
+                "$                           0\n" +
                 "S0000000000000P0000000000000S\n"));
     }
 }

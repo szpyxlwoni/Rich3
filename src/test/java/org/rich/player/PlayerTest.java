@@ -28,4 +28,25 @@ public class PlayerTest {
         }
         assertThat(player.getLocation(), is(0));
     }
+    
+    @Test
+    public void should_add_a_bomb() {
+        player.addBomb();
+
+        assertThat(player.getBomb(), is(1));
+    }
+
+    @Test
+    public void should_add_a_robot() {
+        player.addRobot();
+
+        assertThat(player.getRobot(), is(1));
+    }
+
+    @Test
+    public void should_add_a_blocker() {
+        player.addBlocker();
+
+        assertThat(player.getBlocker(), is(1));
+    }
 }
