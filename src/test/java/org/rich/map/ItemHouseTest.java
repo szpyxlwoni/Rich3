@@ -7,6 +7,7 @@ import org.rich.player.Player;
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
+import static junit.framework.Assert.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.rich.map.ItemHouse.*;
@@ -15,15 +16,16 @@ import static org.rich.player.Player.*;
 public class ItemHouseTest {
 
     private Player player;
+    private ItemHouse itemHouse;
 
     @Before
     public void setUp() throws Exception {
         player = new Player("孙小美", "S");
+        itemHouse = new ItemHouse();
     }
 
     @Test
     public void should_let_player_buy_one_item_when_player_choose_one_item() {
-        ItemHouse itemHouse = new ItemHouse();
         Scanner scanner = new Scanner(new ByteArrayInputStream("1 2 3".getBytes()));
 
         itemHouse.executeFunc(player, scanner);
@@ -42,10 +44,27 @@ public class ItemHouseTest {
     @Test
     public void should_do_nothing_when_player_do_not_have_enough_point() {
         player.setPoint(0);
-        ItemHouse itemHouse = new ItemHouse();
         itemHouse.executeFunc(player, new Scanner(System.in));
 
         assertThat(player.getPoint(), is(0));
-        assertThat(player.getItem().size(), is(0));
+        assertTrue(player.getItem().isEmpty());
+    }
+
+    @Test
+    public void should_do_nothing_when_player_type_a_wrong_input() {
+        Scanner scanner = new Scanner(new ByteArrayInputStream("d".getBytes()));
+        itemHouse.executeFunc(player, scanner);
+
+        assertThat(player.getPoint(), is(INIT_POINT));
+        assertTrue(player.getItem().isEmpty());
+    }
+
+    @Test
+    public void should_do_nothing_when_player_choose_wrong_item() {
+        Scanner scanner = new Scanner(new ByteArrayInputStream("9".getBytes()));
+        itemHouse.executeFunc(player, scanner);
+                                                                                                a
+        assertThat(player.getPoint(), is(INIT_POINT));
+        assertTrue(player.getItem().isEmpty());
     }
 }
