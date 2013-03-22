@@ -15,8 +15,9 @@ public class RollCommandTest {
         Players players = mock(Players.class);
         Command command = new RollCommand();
         Map map = new Map();
-        command.execute(players, map, new Scanner(System.in));
-        verify(players).move(map);
+        Scanner input = new Scanner(System.in);
+        command.execute(players, map, input);
+        verify(players).move(map, input);
         verify(players).changePlayer();
     }
 }

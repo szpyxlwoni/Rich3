@@ -31,16 +31,4 @@ public class MapTest {
                 "S                           0\n" +
                 "S0000000000000P0000000000000S\n"));
     }
-
-    @Test
-    public void should_stop_player_move_when_player_arrive_prison() {
-        Map map = new Map();
-        Player player = new Player("孙小美", "S");
-
-        player.setLocation(48);
-        assertTrue(map.isNullItem(player));
-        player.moveOneStep();
-        map.executeFunc(player, new Scanner(System.in));
-        assertFalse(map.isNullItem(player));
-    }
 }

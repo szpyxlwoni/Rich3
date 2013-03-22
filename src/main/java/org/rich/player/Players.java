@@ -5,6 +5,7 @@ import org.rich.map.Map;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Players {
     private final int PLAYER_MAX_NUMBER = 4;
@@ -36,19 +37,26 @@ public class Players {
         return players.get(0);
     }
 
-    public void move(Map map) {
+    public void move(Map map, Scanner scanner) {
         int moveNumber = roll();
         for (int i = 0; i < moveNumber; i++) {
-            moveOneStep(roll(), map);
+            if (map.isNullItem(getCurrentPlayer())) {
+                moveOneStep();
+            } else {
+                break;
+            }
         }
+        map.executeFunc(getCurrentPlayer(), scanner);
     }
 
-    private void moveOneStep(int moveNumber, Map map) {
+    private void moveOneStep() {
         getCurrentPlayer().moveOneStep();
     }
 
     public int roll() {
-        return new Random().nextInt(RANDOM_SIZE) + 1;
+        int retVal = new Random().nextInt(RANDOM_SIZE) + 1;
+        System.out.println("您掷出了" + retVal + "点");
+        return retVal;
     }
 
     public String checkPlayerLocation(String mapStr, int location) {

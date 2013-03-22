@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class RollCommand implements Command {
     @Override
     public void execute(Players players, Map map, Scanner input) {
-        players.move(map);
+        players.move(map, input);
         players.changePlayer();
     }
 }

@@ -2,12 +2,10 @@ package org.rich.player;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.rich.map.Map;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.*;
 
 public class PlayersTest {
 

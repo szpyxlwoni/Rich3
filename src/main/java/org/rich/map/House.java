@@ -75,6 +75,7 @@ public class House implements Land {
             player.setMoney(player.getMoney() - getFee());
             levelUp();
         } else if (!isBoughtBy(player)) {
+            System.out.println("此地为" + getOwner() + "所有，您需缴纳过路费" + getFee() * (getLevel() + 1) / 2);
             player.setMoney(player.getMoney() - getFee() * (getLevel() + 1) / 2);
         }
     }

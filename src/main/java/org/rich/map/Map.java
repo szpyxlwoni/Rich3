@@ -77,6 +77,6 @@ public class Map {
     }
 
     public void executeFunc(Player player, Scanner scanner) {
-         map.get(PRISON_LOCATION).executeFunc(player, scanner);
+         map.get(player.getLocation()).executeFunc(player, scanner);
     }
 }
