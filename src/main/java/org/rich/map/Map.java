@@ -1,5 +1,6 @@
 package org.rich.map;
 
+import org.rich.player.Player;
 import org.rich.player.Players;
 
 import java.util.ArrayList;
@@ -12,11 +13,32 @@ public class Map {
     public static final int VERTICAL_MAP_SIZE = 6;
     public static final int TOP_MAP_SIZE = 29;
     private final List<Land> map = new ArrayList<Land>();
+    public static final int PRISON_LOCATION = 49;
 
     public Map() {
         map.add(new StartPoint());
-        for (int i = 0; i < 69; i++) {
+        for (int i = 0; i < 13; i++) {
             map.add(new House(1));
+        }
+        map.add(new StartPoint());
+        for (int i = 0; i < 13; i++) {
+            map.add(new House(2));
+        }
+        map.add(new StartPoint());
+        for (int i = 0; i < 6; i++) {
+            map.add(new House(3));
+        }
+        map.add(new StartPoint());
+        for (int i = 0; i < 13; i++) {
+            map.add(new House(4));
+        }
+        map.add(new Prison());
+        for (int i = 0; i < 13; i++) {
+            map.add(new House(5));
+        }
+        map.add(new StartPoint());
+        for (int i = 0; i < 6; i++) {
+            map.add(new StartPoint());
         }
     }
 
@@ -35,13 +57,27 @@ public class Map {
         }
         retVal += "\n";
         for (int i = 0; i < VERTICAL_MAP_SIZE; i++) {
-            retVal += map.get(MAP_SIZE - i - 1) + "                           " + map.get(TOP_MAP_SIZE + i) + "\n";
+            retVal += players.checkPlayerLocation(map.get(MAP_SIZE - i - 1).toString(), MAP_SIZE - i - 1) +
+                    "                           " + players.checkPlayerLocation(map.get(TOP_MAP_SIZE + i).toString(), TOP_MAP_SIZE + i) + "\n";
         }
         for (int i = 0; i < BOTTOM_MAP_SIZE; i++) {
-            retVal += map.get(MAP_SIZE - i - VERTICAL_MAP_SIZE - 1).toString();
+            retVal += players.checkPlayerLocation(map.get(MAP_SIZE - i - VERTICAL_MAP_SIZE - 1).toString(), MAP_SIZE - i - VERTICAL_MAP_SIZE - 1);
         }
         retVal += "\n";
         return retVal;
+    }
 
+    public boolean isNullItem(Player player) {
+        return !isInPrison(player);
+    }
+
+    private boolean isInPrison(Player player) {
+        return ((Prison) map.get(PRISON_LOCATION)).isStop(player);
+    }
+
+    public void executeFunc(Player player) {
+        if (player.getLocation() == PRISON_LOCATION) {
+            ((Prison) map.get(PRISON_LOCATION)).stopPlayer(player);
+        }
     }
 }

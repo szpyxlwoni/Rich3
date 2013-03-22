@@ -26,8 +26,8 @@ public class BootstrapRich {
         String commandStr = scanner.next();
         while (!commandStr.equalsIgnoreCase("exit")) {
             executeCommand(commandStr);
-            System.out.println(players.getCurrentPlayerName() + ">");
             map.output(players);
+            System.out.println(players.getCurrentPlayerName() + ">");
             commandStr = scanner.next();
         }
     }

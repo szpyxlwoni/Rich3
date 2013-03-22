@@ -7,6 +7,7 @@ import org.rich.map.Map;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.*;
 
 public class PlayersTest {
 

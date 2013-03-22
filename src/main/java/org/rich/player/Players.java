@@ -1,5 +1,7 @@
 package org.rich.player;
 
+import org.rich.map.Map;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -34,8 +36,15 @@ public class Players {
         return players.get(0);
     }
 
-    public void move() {
-        getCurrentPlayer().move(roll());
+    public void move(Map map) {
+        int moveNumber = roll();
+        for (int i = 0; i < moveNumber; i++) {
+            moveOneStep(roll(), map);
+        }
+    }
+
+    private void moveOneStep(int moveNumber, Map map) {
+        getCurrentPlayer().moveOneStep();
     }
 
     public int roll() {

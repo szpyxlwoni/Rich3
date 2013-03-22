@@ -40,8 +40,8 @@ public class Player {
         }
     }
 
-    public void move(int moveNumber) {
-        location += moveNumber;
+    public void moveOneStep() {
+        location = (location + 1) % 70;
     }
 
     public int getLocation() {
@@ -62,5 +62,9 @@ public class Player {
 
     public String getAbbr() {
         return abbr;
+    }
+
+    public void setLocation(int location) {
+        this.location = location;
     }
 }
