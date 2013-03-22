@@ -3,6 +3,7 @@ package org.rich.map;
 import org.rich.player.Player;
 
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Prison implements Land {
 
@@ -25,7 +26,8 @@ public class Prison implements Land {
         return stopDayForEachPlayer.get(player.getName()) != 0;
     }
 
-    public void stopPlayer(Player player) {
+    @Override
+    public void executeFunc(Player player, Scanner scanner) {
         int playerStopDay = stopDayForEachPlayer.get(player.getName());
         if (playerStopDay <= 2 && playerStopDay > 0) {
             stopDayForEachPlayer.put(player.getName(), playerStopDay - 1);

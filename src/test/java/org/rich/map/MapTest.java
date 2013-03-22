@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.rich.player.Player;
 import org.rich.player.Players;
 
+import java.util.Scanner;
+
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.core.Is.is;
@@ -38,7 +40,7 @@ public class MapTest {
         player.setLocation(48);
         assertTrue(map.isNullItem(player));
         player.moveOneStep();
-        map.executeFunc(player);
+        map.executeFunc(player, new Scanner(System.in));
         assertFalse(map.isNullItem(player));
     }
 }

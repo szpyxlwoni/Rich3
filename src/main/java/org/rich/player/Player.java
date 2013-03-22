@@ -20,26 +20,6 @@ public class Player {
         this.money = INIT_MONEY;
     }
 
-    public void arrive(House house, Scanner scanner) {
-        if (house.isEmpty()) {
-            System.out.println("是否购买该处空地，xxx元（Y/N）?");
-            if (scanner.next().equals("N")) {
-                return;
-            }
-            money -= house.getFee();
-            house.setOwner(this.getName());
-        } else if (house.isBoughtBy(this) && !house.isMax()) {
-            System.out.println("是否升级该处地产，xxx元（Y/N）?");
-            if (scanner.next().equals("N")) {
-                return;
-            }
-            money -= house.getFee();
-            house.levelUp();
-        } else if (!house.isBoughtBy(this)) {
-            money -= house.getFee() * (house.getLevel() + 1) / 2;
-        }
-    }
-
     public void moveOneStep() {
         location = (location + 1) % 70;
     }

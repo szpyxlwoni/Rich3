@@ -2,6 +2,8 @@ package org.rich.map;
 
 import org.rich.player.Player;
 
+import java.util.Scanner;
+
 public class House implements Land {
     private String owner = "";
     private int area;
@@ -54,5 +56,26 @@ public class House implements Land {
 
     public void levelUp() {
         level++;
+    }
+
+    @Override
+    public void executeFunc(Player player, Scanner scanner) {
+        if (this.isEmpty()) {
+            System.out.println("是否购买该处空地，xxx元（Y/N）?");
+            if (scanner.next().equals("N")) {
+                return;
+            }
+            player.setMoney(player.getMoney() - getFee());
+            setOwner(player.getName());
+        } else if (isBoughtBy(player) && !isMax()) {
+            System.out.println("是否升级该处地产，xxx元（Y/N）?");
+            if (scanner.next().equals("N")) {
+                return;
+            }
+            player.setMoney(player.getMoney() - getFee());
+            levelUp();
+        } else if (!isBoughtBy(player)) {
+            player.setMoney(player.getMoney() - getFee() * (getLevel() + 1) / 2);
+        }
     }
 }

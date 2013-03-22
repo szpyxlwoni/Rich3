@@ -5,6 +5,7 @@ import org.rich.player.Players;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Map {
 
@@ -75,9 +76,7 @@ public class Map {
         return ((Prison) map.get(PRISON_LOCATION)).isStop(player);
     }
 
-    public void executeFunc(Player player) {
-        if (player.getLocation() == PRISON_LOCATION) {
-            ((Prison) map.get(PRISON_LOCATION)).stopPlayer(player);
-        }
+    public void executeFunc(Player player, Scanner scanner) {
+         map.get(PRISON_LOCATION).executeFunc(player, scanner);
     }
 }
