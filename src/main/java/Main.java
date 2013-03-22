@@ -1,6 +1,7 @@
 import org.rich.BootstrapRich;
 
-public class Main {
+public final class Main {
+    private Main(){}
 
     public static void main(String[] args) {
         BootstrapRich bootstrapRich = new BootstrapRich();

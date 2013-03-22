@@ -18,12 +18,12 @@ public class MapTest {
         Map map = new Map(70);
         Players players = new Players("12");
         assertThat(map.toOutputType(players), is("Q0000000000000000000000000000\n" +
-                                                 "0                           0\n" +
-                                                 "0                           0\n" +
-                                                 "0                           0\n" +
-                                                 "0                           0\n" +
-                                                 "0                           0\n" +
-                                                 "0                           0\n" +
-                                                 "00000000000000000000000000000\n"));
+                "0                           0\n" +
+                "0                           0\n" +
+                "0                           0\n" +
+                "0                           0\n" +
+                "0                           0\n" +
+                "0                           0\n" +
+                "00000000000000000000000000000\n"));
     }
 }

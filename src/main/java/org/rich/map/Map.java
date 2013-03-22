@@ -34,7 +34,7 @@ public class Map {
         }
         retVal += "\n";
         for (int i = 0; i < VERTICAL_MAP_SIZE; i++) {
-            retVal += map.get(MAP_SIZE - i - 1) + "                           " + map.get(29 + i) + "\n";
+            retVal += map.get(MAP_SIZE - i - 1) + "                           " + map.get(TOP_MAP_SIZE + i) + "\n";
         }
         for (int i = 0; i < BOTTOM_MAP_SIZE; i++) {
             retVal += map.get(MAP_SIZE - i - VERTICAL_MAP_SIZE - 1).toString();

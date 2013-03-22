@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.Random;
 
 public class Players {
+    private final int PLAYER_MAX_NUMBER = 4;
     private List<Player> players = new ArrayList<Player>();
     private String[] roles = new String[]{"钱夫人", "阿土伯", "孙小美", "金贝贝", "Q", "A", "S", "J"};
+    private final int RANDOM_SIZE = 6;
 
     public Players(String rolesStr) {
         for (int i = 0; i < rolesStr.length(); i++) {
-            players.add(new Player(roles[getRoleIndex(rolesStr, i)], roles[getRoleIndex(rolesStr, i) + 4]));
+            players.add(new Player(roles[getRoleIndex(rolesStr, i)], roles[getRoleIndex(rolesStr, i) + PLAYER_MAX_NUMBER]));
         }
     }
 
@@ -37,7 +39,7 @@ public class Players {
     }
 
     public int roll() {
-        return new Random().nextInt(6) + 1;
+        return new Random().nextInt(RANDOM_SIZE) + 1;
     }
 
     public String checkPlayerLocation(String mapStr, int location) {

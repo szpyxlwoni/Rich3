@@ -25,6 +25,9 @@
         <module name="Rich3" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Rich3" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 
