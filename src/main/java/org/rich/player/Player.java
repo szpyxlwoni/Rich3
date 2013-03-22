@@ -85,10 +85,6 @@ public class Player {
         point -= BLOCKER_POINT;
     }
 
-    public int getBlocker() {
-        return blocker;
-    }
-
     public boolean isBlessed() {
         return hasGod;
     }
@@ -99,5 +95,13 @@ public class Player {
 
     public void useBlocker() {
         blocker--;
+    }
+
+    public void useBomb() {
+        bomb--;
+    }
+
+    public int getBlocker() {
+        return blocker;
     }
 }

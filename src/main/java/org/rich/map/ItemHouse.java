@@ -22,7 +22,7 @@ public class ItemHouse implements Land {
         }
         System.out.println("欢迎光临道具屋， 请选择您所需要的道具：（1.路障；2.机器娃娃；3.炸弹）");
         if (itemNo == 1) {
-            if (player.getPoint() - BLOCKER_POINT < 0 || player.getBlocker() == 10) {
+            if (player.getPoint() - BLOCKER_POINT < 0 || player.getBomb() == 10) {
                 return;
             }
             player.addBlocker();

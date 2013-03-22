@@ -17,6 +17,7 @@ public class Map {
     private final List<Land> map = new ArrayList<Land>();
     public static final int PRISON_LOCATION = 49;
     private List<Integer> blockers = new ArrayList<Integer>();
+    private List<Integer> bomb = new ArrayList<Integer>();
 
     public Map() {
         map.add(new StartPoint());
@@ -87,5 +88,9 @@ public class Map {
 
     public void useBlocker(int location) {
         blockers.add(location);
+    }
+
+    public void useBomb(int location) {
+        bomb.add(location);
     }
 }

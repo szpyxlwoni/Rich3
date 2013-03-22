@@ -28,7 +28,7 @@ public class BlockCommandTest {
 
     @Test
     public void should_do_nothing_when_player_have_not_blocker() {
-        blockCommand.execute(players, new org.rich.map.Map(), scanner);
+        blockCommand.execute(players, new Map(), scanner);
         assertThat(players.getCurrentPlayer().getBlocker(), is(0));
     }
 
