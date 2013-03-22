@@ -16,7 +16,7 @@ public class Map {
     public Map() {
         map.add(new StartPoint());
         for (int i = 0; i < 69; i++) {
-            map.add(new EmptyHouse());
+            map.add(new House(1));
         }
     }
 
