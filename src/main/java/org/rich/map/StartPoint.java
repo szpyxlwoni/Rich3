@@ -1,4 +1,8 @@
 package org.rich.map;
 
-public class StartPoint {
+public class StartPoint implements Land {
+    @Override
+    public String toString() {
+        return "S";
+    }
 }

@@ -3,11 +3,8 @@ package org.rich;
 import org.rich.map.Map;
 import org.rich.player.Players;
 
-import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.Scanner;
-
-import static org.rich.map.Map.*;
 
 public class BootstrapRich {
 
@@ -20,7 +17,7 @@ public class BootstrapRich {
                 "(1.钱夫人; 2.阿土伯; 3.孙小美; 4.金贝贝):");
         scanner = new Scanner(System.in);
         players = new Players(scanner.next());
-        map = new Map(MAP_SIZE);
+        map = new Map();
     }
 
     public void start() {

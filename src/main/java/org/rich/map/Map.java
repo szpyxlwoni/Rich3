@@ -11,10 +11,11 @@ public class Map {
     public static final int BOTTOM_MAP_SIZE = 29;
     public static final int VERTICAL_MAP_SIZE = 6;
     public static final int TOP_MAP_SIZE = 29;
-    private final List<EmptyHouse> map = new ArrayList<EmptyHouse>();
+    private final List<Land> map = new ArrayList<Land>();
 
-    public Map(int emptySize) {
-        for (int i = 0; i < emptySize; i++) {
+    public Map() {
+        map.add(new StartPoint());
+        for (int i = 0; i < 69; i++) {
             map.add(new EmptyHouse());
         }
     }

@@ -14,7 +14,7 @@ public class RollCommandTest {
     public void should_move_player_and_change_player() {
         Players players = mock(Players.class);
         Command command = new RollCommand();
-        command.execute(players, new Map(70), new Scanner(System.in));
+        command.execute(players, new Map(), new Scanner(System.in));
         verify(players).move();
         verify(players).changePlayer();
     }
