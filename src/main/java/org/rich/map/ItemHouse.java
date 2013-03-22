@@ -1,8 +1,5 @@
 package org.rich.map;
 
-import org.rich.item.Blocker;
-import org.rich.item.Bomb;
-import org.rich.item.RobotItem;
 import org.rich.player.Player;
 
 import java.util.Scanner;

@@ -5,6 +5,7 @@ import org.rich.player.Players;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Scanner;
 
 public class Map {
@@ -15,6 +16,7 @@ public class Map {
     public static final int TOP_MAP_SIZE = 29;
     private final List<Land> map = new ArrayList<Land>();
     public static final int PRISON_LOCATION = 49;
+    private List<Integer> blockers = new ArrayList<Integer>();
 
     public Map() {
         map.add(new StartPoint());
@@ -81,5 +83,9 @@ public class Map {
 
     public void executeFunc(Player player, Scanner scanner) {
          map.get(player.getLocation()).executeFunc(player, scanner);
+    }
+
+    public void useBlocker(int location) {
+        blockers.add(location);
     }
 }
