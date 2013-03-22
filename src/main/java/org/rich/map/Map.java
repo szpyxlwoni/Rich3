@@ -21,7 +21,7 @@ public class Map {
         for (int i = 0; i < 13; i++) {
             map.add(new House(1));
         }
-        map.add(new StartPoint());
+        map.add(new Hospital());
         for (int i = 0; i < 13; i++) {
             map.add(new House(2));
         }
