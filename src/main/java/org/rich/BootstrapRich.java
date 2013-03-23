@@ -27,6 +27,10 @@ public class BootstrapRich {
         while (!commandStr.equalsIgnoreCase("quit")) {
             executeCommand(commandStr);
             map.output(players);
+            if (players.getPlayersNumber() == 1) {
+                System.out.println("胜利者是" + players.getCurrentPlayerName());
+                close();
+            }
             System.out.println(players.getCurrentPlayerName() + ">");
             commandStr = scanner.next();
         }
@@ -38,13 +42,11 @@ public class BootstrapRich {
             Method executeMethod = commandClass.getMethod("execute", Players.class, Map.class, Scanner.class);
             executeMethod.invoke(commandClass.newInstance(), players, map, scanner);
         } catch (Exception e) {
-            e.printStackTrace();
-            close();
         }
     }
 
     private String changeStrToCommandName(String commandStr) {
-        return commandStr.replace(commandStr.charAt(0), (char) (commandStr.charAt(0) + 'A' - 'a'));
+        return commandStr.replaceFirst(commandStr.charAt(0) + "", (commandStr.charAt(0) + "").toUpperCase());
     }
 
     public void close() {

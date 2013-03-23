@@ -27,7 +27,7 @@ public class BombCommandTest {
 
     @Test
     public void should_do_nothing_when_player_have_not_blocker() {
-        bombCommand.execute(players, new org.rich.map.Map(), scanner);
+        bombCommand.execute(players, new Map(), scanner);
         assertThat(players.getCurrentPlayer().getBomb(), is(0));
     }
 

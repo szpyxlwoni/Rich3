@@ -67,6 +67,7 @@ public class House implements Land {
             }
             player.setMoney(player.getMoney() - getFee());
             setOwner(player.getName());
+            player.addHouse(this);
         } else if (isBoughtBy(player) && !isMax()) {
             System.out.println("是否升级该处地产，xxx元（Y/N）?");
             if (scanner.next().equals("N")) {

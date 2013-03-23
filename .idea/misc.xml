@@ -61,6 +61,11 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="FindBugsConfigurable">
+    <option name="make" value="true" />
+    <option name="effort" value="default" />
+    <option name="priority" value="Medium" />
+  </component>
   <component name="IdProvider" IDEtalkID="7468E67513BF71ACEA2F3C5661A18FFA" />
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" />

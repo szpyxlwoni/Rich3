@@ -43,6 +43,7 @@ public class Players {
             if (map.isNullItem(getCurrentPlayer())) {
                 moveOneStep();
             } else {
+                map.executeItem(getCurrentPlayer());
                 break;
             }
         }
@@ -70,5 +71,9 @@ public class Players {
 
     public String getCurrentPlayerName() {
         return getCurrentPlayer().getName();
+    }
+
+    public void removeCurrentPlayer() {
+        players.remove(players.get(0));
     }
 }

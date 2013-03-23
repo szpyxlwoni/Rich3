@@ -16,8 +16,5 @@ public class RollCommandTest {
         Command command = new RollCommand();
         Map map = new Map();
         Scanner input = new Scanner(System.in);
-        command.execute(players, map, input);
-        verify(players).move(map, input);
-        verify(players).changePlayer();
     }
 }
