@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 
 public class PlayersTest {
@@ -20,6 +21,8 @@ public class PlayersTest {
     public void should_init_four_players_given_four_number() {
         int playerNumber = players.getPlayersNumber();
         assertThat(playerNumber, is(4));
+        assertThat(players.getCurrentPlayerName(), is("钱夫人"));
+        assertThat(players.getCurrentPlayerAbbr(), is("Q"));
     }
 
     @Test
@@ -31,7 +34,7 @@ public class PlayersTest {
 
     @Test
     public void should_get_current_player() {
-        assertThat(players.getCurrentPlayer(), is(Player.class));
+        assertThat(players.getCurrentPlayer(), notNullValue());
     }
 
     @Test

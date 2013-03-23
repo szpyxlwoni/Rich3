@@ -8,19 +8,21 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Players {
-    private final int PLAYER_MAX_NUMBER = 4;
     private List<Player> players = new ArrayList<Player>();
-    private String[] roles = new String[]{"钱夫人", "阿土伯", "孙小美", "金贝贝", "Q", "A", "S", "J"};
-    private final int RANDOM_SIZE = 6;
+    private static final int RANDOM_SIZE = 6;
 
     public Players(String rolesStr) {
         for (int i = 0; i < rolesStr.length(); i++) {
-            players.add(new Player(roles[getRoleIndex(rolesStr, i)], roles[getRoleIndex(rolesStr, i) + PLAYER_MAX_NUMBER]));
+            players.add(new Player(getNameByStringNumber(rolesStr, i), getAbbreviationByStringNumber(rolesStr, i)));
         }
     }
 
-    private int getRoleIndex(String rolesStr, int i) {
-        return rolesStr.charAt(i) - '1';
+    private String getAbbreviationByStringNumber(String rolesStr, int i) {
+        return RolesAbbreviation.values()[rolesStr.charAt(i) - '1'].toString();
+    }
+
+    private String getNameByStringNumber(String rolesStr, int i) {
+        return Roles.values()[rolesStr.charAt(i) - '1'].toString();
     }
 
     public int getPlayersNumber() {
@@ -75,5 +77,22 @@ public class Players {
 
     public void removeCurrentPlayer() {
         players.remove(players.get(0));
+    }
+
+    public String checkItem(String s, Map map) {
+        String retVal = s;
+        for (Player currentPlayer : players) {
+            if (map.hasBlocker(currentPlayer)) {
+                retVal = "@";
+            }
+            if(map.hasBomb(currentPlayer)) {
+                retVal = "#";
+            }
+        }
+        return retVal;
+    }
+
+    public String getCurrentPlayerAbbr() {
+        return getCurrentPlayer().getAbbr();
     }
 }

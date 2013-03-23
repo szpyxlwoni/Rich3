@@ -1,6 +1,7 @@
 package org.rich.player;
 
 import org.rich.map.House;
+import org.rich.map.Map;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,13 +10,12 @@ import static org.rich.map.ItemHouse.*;
 
 public class Player {
     public static final int INIT_POINT = 1000;
+    public static final int INIT_MONEY = 1000;
+
     private final String name;
-    public final static int INIT_MONEY = 1000;
-
-    private int location;
-
     private final String abbr;
 
+    private int location;
     private int money;
     private int point;
     private int bomb;
@@ -33,7 +33,7 @@ public class Player {
     }
 
     public void moveOneStep() {
-        location = (location + 1) % 70;
+        location = (location + 1) % Map.MAP_SIZE;
     }
 
     public int getLocation() {

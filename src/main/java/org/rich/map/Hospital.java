@@ -3,10 +3,11 @@ package org.rich.map;
 import org.rich.player.Player;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Hospital implements Land {
-    private final HashMap<String, Integer> stopDayForEachPlayer;
+    private final Map<String, Integer> stopDayForEachPlayer;
 
     public Hospital() {
         stopDayForEachPlayer = new HashMap<String, Integer>();

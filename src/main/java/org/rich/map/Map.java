@@ -58,42 +58,31 @@ public class Map {
     }
 
     public String toOutputType(Players players) {
-        String retVal = "";
+        StringBuffer retVal = new StringBuffer();
         for (int i = 0; i < TOP_MAP_SIZE; i++) {
-            retVal += getMapString(players, i);
+            retVal.append(getMapString(players, i));
         }
-        retVal += "\n";
+        retVal.append("\n");
         for (int i = 0; i < VERTICAL_MAP_SIZE; i++) {
-            retVal += getMapString(players, MAP_SIZE - i - 1) +
-                    "                           " + getMapString(players, TOP_MAP_SIZE + i) + "\n";
+            retVal.append(getMapString(players, MAP_SIZE - i - 1)).append("                           ")
+                    .append(getMapString(players, TOP_MAP_SIZE + i)).append("\n");
         }
         for (int i = 0; i < BOTTOM_MAP_SIZE; i++) {
-            retVal += getMapString(players, MAP_SIZE - i - VERTICAL_MAP_SIZE - 1);
+            retVal.append(getMapString(players, MAP_SIZE - i - VERTICAL_MAP_SIZE - 1));
         }
-        retVal += "\n";
-        return retVal;
+        retVal.append("\n");
+        return retVal.toString();
     }
 
     private String getMapString(Players players, int i) {
-        return players.checkPlayerLocation(checkItem(map.get(i).toString(), players.getCurrentPlayer()), i);
-    }
-
-    private String checkItem(String map, Player player) {
-        String retVal = map;
-        if (hasBlocker(player)) {
-            retVal = "@";
-        }
-        if(hasBomb(player)) {
-            retVal = "#";
-        }
-        return retVal;
+        return players.checkPlayerLocation(players.checkItem(map.get(i).toString(), this), i);
     }
 
     public boolean isNullItem(Player player) {
         return !isInPrison(player) && !hasBomb(player) && !hasBlocker(player);
     }
 
-    private boolean hasBlocker(Player player) {
+    public boolean hasBlocker(Player player) {
         for (int i = 0; i < bombs.size(); i++) {
             int oneLocation = bombs.get(i);
             if (oneLocation == player.getLocation()) {
@@ -103,7 +92,7 @@ public class Map {
         return false;
     }
 
-    private boolean hasBomb(Player player) {
+    public boolean hasBomb(Player player) {
         for (int i = 0; i < blockers.size(); i++) {
             int oneLocation = blockers.get(i);
             if (oneLocation == player.getLocation()) {
@@ -162,7 +151,7 @@ public class Map {
     public void executeItem(Player player) {
         if (hasBomb(player)) {
             player.setLocation(49);
-            ((Prison) map.get(PRISON_LOCATION)).executeFunc(player, new Scanner(System.in));
+            map.get(PRISON_LOCATION).executeFunc(player, new Scanner(System.in));
         }
     }
 }

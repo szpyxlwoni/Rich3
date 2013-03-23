@@ -2,6 +2,7 @@ package org.rich.map;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.rich.helper.ScannerHelper;
 import org.rich.player.Player;
 
 import java.io.ByteArrayInputStream;
@@ -25,7 +26,7 @@ public class GiftHouseTest {
 
     @Test
     public void should_let_player_get_one_item_when_player_choose_one_item() {
-        Scanner scanner = new Scanner(new ByteArrayInputStream("1 2 3".getBytes()));
+        Scanner scanner = ScannerHelper.createScannerForTest("1 2 3");
 
         giftHouse.executeFunc(player, scanner);
         assertThat(player.getMoney(), is(INIT_MONEY + 2000));

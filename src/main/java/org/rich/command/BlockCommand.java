@@ -10,8 +10,7 @@ public class BlockCommand implements Command {
     @Override
     public void execute(Players players, Map map, Scanner input) {
         if (players.getCurrentPlayer().getBlocker() > 0) {
-            int relativePosition = input.nextInt();
-            map.useBlocker(getBlockerSetLocation(players, relativePosition));
+            map.useBlocker(getBlockerSetLocation(players, input.nextInt()));
             players.getCurrentPlayer().useBlocker();
         } else {
             input.nextInt();
@@ -21,7 +20,7 @@ public class BlockCommand implements Command {
 
     public int getBlockerSetLocation(Players players, int relativePosition) {
         if (relativePosition < 0) {
-            relativePosition = 70 + relativePosition;
+            return players.getCurrentPlayer().getLocation() + relativePosition + relativePosition;
         }
         return players.getCurrentPlayer().getLocation() + relativePosition;
     }

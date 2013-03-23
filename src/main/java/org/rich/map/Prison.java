@@ -3,11 +3,12 @@ package org.rich.map;
 import org.rich.player.Player;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Prison implements Land {
 
-    public final HashMap<String, Integer> stopDayForEachPlayer;
+    private final Map<String, Integer> stopDayForEachPlayer;
 
     public Prison() {
         stopDayForEachPlayer = new HashMap<String, Integer>();
