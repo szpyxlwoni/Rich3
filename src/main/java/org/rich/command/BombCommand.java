@@ -1,19 +1,26 @@
 package org.rich.command;
 
 import org.rich.map.Map;
-import org.rich.player.Players;
+import org.rich.player.Player;
+import org.rich.util.CommandContext;
 
-import java.util.Scanner;
+import static org.rich.util.CommandContext.*;
 
 public class BombCommand implements Command {
+
     @Override
-    public void execute(Players players, Map map, Scanner input) {
-        if (players.getCurrentPlayer().getBomb() > 0) {
-            map.useBomb(players.getSetLocation(input.nextInt()));
-            players.getCurrentPlayer().useBomb();
-        } else {
-            input.nextInt();
-            System.out.println("对不起，您没有炸弹");
+    public CommandContext execute(CommandContext commandContext) {
+        commandContext.setState(hasBomb(commandContext.getPlayer()));
+        if (commandContext.getState() == SUCCESS) {
+            setBombToMap(commandContext.getMap(), commandContext.getPlayer(), commandContext.getLocation());
         }
+        return commandContext;
+    }
+
+    private void setBombToMap(Map map, Player player, int location) {
+    }
+
+    private int hasBomb(Player player) {
+        return player.hasBomb() ? SUCCESS : NO_ITEM;
     }
 }

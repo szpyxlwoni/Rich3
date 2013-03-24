@@ -11,10 +11,12 @@ import static org.junit.Assert.assertThat;
 public class PlayersTest {
 
     private Players players;
+    private Player player;
 
     @Before
     public void setUp() {
         players = new Players("1234");
+        player = players.getCurrentPlayer();
     }
 
     @Test
@@ -54,14 +56,14 @@ public class PlayersTest {
 
     @Test
     public void should__get_blocker_set_location_given_negative_int() {
-        int setLocation = players.getSetLocation(-4);
+        int setLocation = player.getSetLocation(-4);
 
         assertThat(setLocation, is(66));
     }
 
     @Test
     public void should__get_blocker_set_location_given_positive_int() {
-        int setLocation = players.getSetLocation(4);
+        int setLocation = player.getSetLocation(4);
 
         assertThat(setLocation, is(4));
     }

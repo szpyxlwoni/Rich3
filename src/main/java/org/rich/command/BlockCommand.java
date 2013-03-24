@@ -1,14 +1,12 @@
 package org.rich.command;
 
-import org.rich.map.Map;
-import org.rich.player.Players;
+import org.rich.util.CommandContext;
 
-import java.util.Scanner;
+import static org.rich.util.CommandContext.SUCCESS;
 
 public class BlockCommand implements Command {
-
     @Override
-    public void execute(Players players, Map map) {
-        players.getCurrentPlayer().useBlocker();
+    public CommandContext execute(CommandContext commandContext) {
+        return commandContext;
     }
 }

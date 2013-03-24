@@ -1,8 +1,7 @@
 package org.rich.command;
 
-import org.rich.map.Map;
-import org.rich.player.Players;
+import org.rich.util.CommandContext;
 
 public interface Command {
-    void execute(Players players, Map map);
+    CommandContext execute(CommandContext commandContext);
 }

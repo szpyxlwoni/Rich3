@@ -29,12 +29,10 @@ public class BootstrapRich {
     }
 
     public void start() {
-        map.output(players);
         System.out.println(players.getCurrentPlayerName() + ">");
         String commandStr = scanner.next().toLowerCase();
         while (!commandStr.equalsIgnoreCase("quit")) {
             executeCommandByString(commandStr);
-            map.output(players);
             System.out.println(players.getCurrentPlayerName() + ">");
             commandStr = scanner.next();
         }

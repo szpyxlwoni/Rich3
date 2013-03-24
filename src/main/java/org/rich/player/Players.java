@@ -40,16 +40,6 @@ public class Players {
     }
 
     public void move(Map map, Scanner scanner) {
-        int moveNumber = roll();
-        for (int i = 0; i < moveNumber; i++) {
-            if (map.isNullItem(getCurrentPlayer())) {
-                moveOneStep();
-            } else {
-                map.executeItem(getCurrentPlayer());
-                break;
-            }
-        }
-        map.executeFunc(getCurrentPlayer(), scanner);
     }
 
     private void moveOneStep() {
@@ -74,27 +64,7 @@ public class Players {
         return getCurrentPlayer().getName();
     }
 
-    public String checkItem(String s, Map map) {
-        String retVal = s;
-        for (Player currentPlayer : players) {
-            if (map.hasBlocker(currentPlayer)) {
-                retVal = "@";
-            }
-            if(map.hasBomb(currentPlayer)) {
-                retVal = "#";
-            }
-        }
-        return retVal;
-    }
-
     public String getCurrentPlayerAbbr() {
         return getCurrentPlayer().getAbbr();
-    }
-
-    public int getSetLocation(int relativePosition) {
-        if (relativePosition < 0) {
-            return getCurrentPlayer().getLocation() + relativePosition + Map.MAP_SIZE;
-        }
-        return getCurrentPlayer().getLocation() + relativePosition;
     }
 }

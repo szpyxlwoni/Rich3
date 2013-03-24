@@ -1,5 +1,8 @@
 package org.rich.player;
 
+import org.rich.item.Blockers;
+import org.rich.item.Bombs;
+import org.rich.item.Robot;
 import org.rich.map.House;
 import org.rich.map.Map;
 
@@ -18,9 +21,8 @@ public class Player {
     private int location;
     private int money;
     private int point;
-    private int bomb;
-    private int robot;
-    private int blocker;
+    public final Blockers blockers = new Blockers();
+    public final Bombs bombs = new Bombs();
     private boolean hasGod;
     private List<House> houseList = new ArrayList<House>();
 
@@ -34,6 +36,14 @@ public class Player {
 
     public void moveOneStep() {
         location = (location + 1) % Map.MAP_SIZE;
+    }
+
+    public boolean isBlessed() {
+        return hasGod;
+    }
+
+    public void toBless() {
+        hasGod = true;
     }
 
     public int getLocation() {
@@ -68,80 +78,26 @@ public class Player {
         this.point = point;
     }
 
-    public void addBomb() {
-        bomb++;
-        point -= BOMB_POINT;
-    }
-
-    public int getBomb() {
-        return bomb;
-    }
-
-    public int getRobot() {
-        return robot;
-    }
-
-    public void addRobot() {
-        robot++;
-        point -= ROBOT_POINT;
-    }
-
-    public void addBlocker() {
-        blocker++;
-        point -= BLOCKER_POINT;
-    }
-
-    public boolean isBlessed() {
-        return hasGod;
-    }
-
-    public void toBless() {
-        hasGod = true;
-    }
-
-    public void useBlocker() {
-        blocker--;
-    }
-
-    public void useBomb() {
-        bomb--;
-    }
-
-    public int getBlocker() {
-        return blocker;
-    }
-
-    public void useRobot() {
-        robot--;
-    }
-
     public void addHouse(House house) {
         houseList.add(house);
     }
 
-    public int getEmptyHouseNumber() {
-        return getHouseNumber(0);
-    }
-
-    public int getLevelOneHouseNumber() {
-        return getHouseNumber(1);
-    }
-
-    public int getLevelTwoHouseNumber() {
-        return getHouseNumber(2);
-    }
-
-    public int getLevelThreeHouseNumber() {
-        return getHouseNumber(3);
-    }
-
-    private int getHouseNumber(int level) {
-        int retVal = 0;
-        for (int i = 0; i < houseList.size(); i++) {
-            if (houseList.get(i).getLevel() == level) {
-                retVal++;
-            }
+    public int getSetLocation(int relativePosition) {
+        if (relativePosition < 0) {
+            return getLocation() + relativePosition + Map.MAP_SIZE;
         }
-        return retVal;
+        return getLocation() + relativePosition;
+    }
+
+    public Blockers getBlockers() {
+        return blockers;
+    }
+
+    public Bombs getBombs() {
+        return bombs;
+    }
+
+    public boolean hasBomb() {
+        return bombs.getNumber() != 0;
     }
 }

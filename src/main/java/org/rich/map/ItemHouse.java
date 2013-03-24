@@ -12,26 +12,6 @@ public class ItemHouse implements Land {
 
     @Override
     public void executeFunc(Player player, Scanner scanner) {
-        if (player.getPoint() < ROBOT_POINT) {
-            return;
-        }
-        int itemNo = scanner.nextInt();
-        if (itemNo == 1) {
-            if (player.getPoint() - BLOCKER_POINT < 0 || player.getBomb() == 10) {
-                return;
-            }
-            player.addBlocker();
-        } else if (itemNo == 2) {
-            if (player.getRobot() == 10) {
-                return;
-            }
-            player.addRobot();
-        } else if (itemNo == 3) {
-            if (player.getPoint() - BOMB_POINT < 0 || player.getBomb() == 10) {
-                return;
-            }
-            player.addBomb();
-        }
     }
 
     @Override
