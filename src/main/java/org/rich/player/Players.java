@@ -58,7 +58,6 @@ public class Players {
 
     public int roll() {
         int retVal = new Random().nextInt(RANDOM_SIZE) + 1;
-        System.out.println("您掷出了" + retVal + "点");
         return retVal;
     }
 
@@ -73,10 +72,6 @@ public class Players {
 
     public String getCurrentPlayerName() {
         return getCurrentPlayer().getName();
-    }
-
-    public void removeCurrentPlayer() {
-        players.remove(players.get(0));
     }
 
     public String checkItem(String s, Map map) {
@@ -94,5 +89,12 @@ public class Players {
 
     public String getCurrentPlayerAbbr() {
         return getCurrentPlayer().getAbbr();
+    }
+
+    public int getSetLocation(int relativePosition) {
+        if (relativePosition < 0) {
+            return getCurrentPlayer().getLocation() + relativePosition + Map.MAP_SIZE;
+        }
+        return getCurrentPlayer().getLocation() + relativePosition;
     }
 }

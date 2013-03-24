@@ -51,4 +51,18 @@ public class PlayersTest {
         int randomNumber = players.roll();
         assertThat(randomNumber <= 6 && randomNumber >= 1, is(true));
     }
+
+    @Test
+    public void should__get_blocker_set_location_given_negative_int() {
+        int setLocation = players.getSetLocation(-4);
+
+        assertThat(setLocation, is(66));
+    }
+
+    @Test
+    public void should__get_blocker_set_location_given_positive_int() {
+        int setLocation = players.getSetLocation(4);
+
+        assertThat(setLocation, is(4));
+    }
 }

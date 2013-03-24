@@ -11,13 +11,7 @@ public class GiftHouse implements Land {
 
     @Override
     public void executeFunc(Player player, Scanner scanner) {
-        int itemNo = 0;
-        try {
-            itemNo = scanner.nextInt();
-        } catch (Exception e) {
-        }
-
-        System.out.println("欢迎光临礼品屋，请选择一件您 喜欢的礼品：（1.现金2000元；2.点数200点；3.福神）");
+        int itemNo = scanner.nextInt();
         if (itemNo == 1) {
             player.setMoney(player.getMoney() + ADD_MONEY_NUMBER);
         } else if (itemNo == 2) {

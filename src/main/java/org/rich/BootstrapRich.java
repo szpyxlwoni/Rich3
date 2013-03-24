@@ -40,7 +40,7 @@ public class BootstrapRich {
         }
     }
 
-    private void executeCommandByString(String commandStr) {
+    public void executeCommandByString(String commandStr) {
         Class commandClass = null;
         try {
             commandClass = Class.forName(COMMAND_PATH + changeStrToCommandName(commandStr));

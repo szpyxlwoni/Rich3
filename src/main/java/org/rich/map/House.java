@@ -61,7 +61,6 @@ public class House implements Land {
     @Override
     public void executeFunc(Player player, Scanner scanner) {
         if (this.isEmpty()) {
-            System.out.println("是否购买该处空地，xxx元（Y/N）?");
             if (scanner.next().equals("N")) {
                 return;
             }
@@ -69,14 +68,12 @@ public class House implements Land {
             setOwner(player.getName());
             player.addHouse(this);
         } else if (isBoughtBy(player) && !isMax()) {
-            System.out.println("是否升级该处地产，xxx元（Y/N）?");
             if (scanner.next().equals("N")) {
                 return;
             }
             player.setMoney(player.getMoney() - getFee());
             levelUp();
         } else if (!isBoughtBy(player)) {
-            System.out.println("此地为" + getOwner() + "所有，您需缴纳过路费" + getFee() * (getLevel() + 1) / 2);
             player.setMoney(player.getMoney() - getFee() * (getLevel() + 1) / 2);
         }
     }

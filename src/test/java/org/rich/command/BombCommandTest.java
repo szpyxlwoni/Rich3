@@ -40,10 +40,4 @@ public class BombCommandTest {
         verify(map).useBomb(60);
         assertThat(players.getCurrentPlayer().getBomb(), is(1));
     }
-
-    @Test
-    public void should_model_negative_number() {
-        int blockerLocation = bombCommand.getBombSetLocation(players, -10);
-        assertThat(blockerLocation, is(60));
-    }
 }

@@ -44,7 +44,7 @@ public class BlockCommandTest {
 
     @Test
     public void should_model_negative_number() {
-        int blockerLocation = blockCommand.getBlockerSetLocation(players, -10);
+        int blockerLocation = players.getSetLocation(-10);
         assertThat(blockerLocation, is(60));
     }
 }

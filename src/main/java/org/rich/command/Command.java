@@ -3,8 +3,6 @@ package org.rich.command;
 import org.rich.map.Map;
 import org.rich.player.Players;
 
-import java.util.Scanner;
-
 public interface Command {
-    void execute(Players players, Map map, Scanner input);
+    void execute(Players players, Map map);
 }
